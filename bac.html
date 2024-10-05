@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to May 29, 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .timer-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #countdown-display {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Countdown to Bac, 2025</h1>
+        <p id="countdown-display"></p>
+    </div>
+
+    <script>
+        const targetDate = new Date('2025-05-29T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDiff = targetDate - now;
+            
+            if (timeDiff <= 0) {
+                document.getElementById('countdown-display').textContent = "The date has passed!";
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown-display').innerHTML = 
+                `${days} days<br>
+                ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
